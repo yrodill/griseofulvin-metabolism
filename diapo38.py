@@ -19,7 +19,7 @@ griseofulvin = model.metabolites.get_by_id("CPD__45__17786_c")
 # nadph = model.metabolites.get_by_id("NADPH_c")
 # proton = model.metabolites.get_by_id("PROTON_c")
 
-print(griseofulvin)
+# print(griseofulvin)
 
 createGriseofulvin = model.reactions.get_by_id("RXN__45__16539")
 
@@ -49,8 +49,14 @@ createGriseofulvin.add_metabolites({model.metabolites.get_by_id("PROTON_c"): -1}
 
 for reaction in model.reactions:
     if(reaction.subsystem == "PWY-7653"):
+        # print(reaction.metabolites)
         reacs.append(reaction)
 
+for i in range(len(reacs)):
+        for metabo in reacs[i].metabolites:
+                metabo.id = metabo.id.lower()
+                print "Metabolites id : ",metabo.id
+                print "Value : ",reacs[i].metabolites[metabo]
 
 # for reac in modelEcoli.boundary:
 #     print(reac)
@@ -59,7 +65,7 @@ for reaction in model.reactions:
 # modelEcoli.add_reactions(nadph.reactions)
 # modelEcoli.add_reactions(proton.reactions)
 # modelEcoli.add_boundary(griseofulvin,type="exchange",ub=1000.0)
-# modelEcoli.add_reactions([createGriseofulvin])
+modelEcoli.add_reactions(reacs)
 print('Ce modèle contient %i réactions'% len(modelEcoli.reactions))
 print('Ce modèle contient %i métabolites'% len(modelEcoli.metabolites))
 
