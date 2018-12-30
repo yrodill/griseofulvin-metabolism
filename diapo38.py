@@ -25,7 +25,7 @@ for i in range(len(reacs)):
                 print metabo.name
                 a=0
                 for metabolite in modelEcoli.metabolites:
-                        if metabolite.name == metabo.name and a == 0:
+                        if metabolite.formula == metabo.formula and a == 0:
                                 print "ID from ecoli model : ",metabolite.id
                                 a += 1
                                 print "Metabolites id : ",metabo.id
@@ -47,8 +47,6 @@ modelEcoli.add_reactions(reacs)
 print('Ce modèle contient %i réactions'% len(modelEcoli.reactions))
 print('Ce modèle contient %i métabolites'% len(modelEcoli.metabolites))
 
-
-
 modelEcoli.summary()
 
 modelEcoli.objective = "RXN__45__16539"
@@ -57,3 +55,13 @@ fluxMax = solution.objective_value
 print(fluxMax)
 
 modelEcoli.summary()
+# modelEcoli.summary(fva=0.95)
+
+print "Writing JSON model for comparison ...\n"
+cobra.io.save_json_model(modelEcoli, "./test.json")
+print "Done!\n"
+
+print model.metabolites.CPD__45__17786_c.summary()
+# print model.metabolites.h_c.summary()
+# print model.metabolites.nadph_c.summary()
+
