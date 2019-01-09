@@ -249,6 +249,7 @@ On ouvre ensuite ce le fichier .xml avec cytoscape. On modifie le layout pour av
 <!-- - Biomasse : 0.982 E.coli et 0.38 Salmonella -->
 
 
+
 ## **Diapo 38 (facultatif)**
 
 ***Combien de moles peut-on en produire par mole de glucose ? Et en concervant une production de biomasse égale à 20% de la production maximale ? Quelles réactions ne peuvent être utilisées que pour produire la molécule d’intérêt et pas pour produire de la biomasse ?***

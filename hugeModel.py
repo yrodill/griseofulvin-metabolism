@@ -27,8 +27,8 @@ modelEcoli.summary(fva=0.95)
 
 solution = modelEcoli.optimize()
 # flux contenus dans solutions.fluxes
-# for reac in modelEcoli.reactions:
-# 	print(str(reac.id) + " : " + str(solution.fluxes[reac.id]))
+for reac in modelEcoli.reactions:
+	print(str(reac.id) + " : " + str(solution.fluxes[reac.id]))
 
 
 print("\n# End Coli \n\n")
@@ -55,7 +55,7 @@ modelSalmonella.summary(fva=0.95)
 solution = modelSalmonella.optimize()
 # flux contenus dans solutions.fluxes
 # for reac in modelSalmonella.reactions:
-# 	print(str(reac.id) + " : " + str(solution.fluxes[reac.id]))
+#         print(str(reac.id) + " : " + str(solution.fluxes[reac.id]))
 
 print("\n# End Salmonella")
 
@@ -74,6 +74,14 @@ for metabo in modelEcoli.metabolites:
 print('Reactions communes : %i'% cptReac)
 print('Metabo communs %i : '% cptMetabo)
 
+file = open('reaction.txt',"w") 
+file.write(str(modelEcoli.reactions.get_by_id("Ec_biomass_iJO1366_core_53p95M")))
+file.write("\n")
+#Ec_biomass_iJO1366_core_53p95M
+file.write(str(modelSalmonella.reactions.get_by_id("biomass_iRR1083_metals")))
+# biomass_iRR1083_metals
+print('\nSave done ')
+file.close()
 # FVA analyze flux
 # fvaColi_df = flux_analysis.variability.flux_variability_analysis(modelEcoli, fraction_of_optimum = 1.0)
 # fvaSalmo_df = flux_analysis.variability.flux_variability_analysis(modelSalmonella, fraction_of_optimum = 1.0)
