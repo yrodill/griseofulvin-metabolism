@@ -59,6 +59,8 @@ solution = modelEcoli.optimize()
 fluxMax = solution.objective_value
 print(fluxMax)
 
+modelEcoli.summary()
+
 
 print "Writing JSON model for comparison ...\n"
 cobra.io.save_json_model(modelEcoli, "./test.json")
