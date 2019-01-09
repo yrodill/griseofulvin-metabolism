@@ -49,6 +49,14 @@ print('Ce modèle contient %i métabolites'% len(modelEcoli.metabolites))
 
 modelEcoli.summary()
 
+reactionUptake = Reaction(
+        id = "uptake",
+        name = "reaction uptake",
+        lower_bound = 0,
+        upper_bound = 1000
+)
+reactionUptake.add_metabolites({CPD__45__468_c:1,ALLYSINE_c:-1,nadp_c:-1,nadph_c:1,h_c:2,h2o_c:1})
+
 
 modelEcoli.objective = "_1__46__21__46__3__46__1__45__RXN"
 solution = modelEcoli.optimize()

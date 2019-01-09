@@ -20,6 +20,7 @@ for reaction in model.reactions:
                 reacs.append(reaction)
                 print(reaction.check_mass_balance())
 
+#modification des ID (bigg != metacyc)
 metabo_list = []
 for i in range(len(reacs)):
         for metabo in reacs[i].metabolites:
@@ -54,10 +55,12 @@ print('Ce modèle contient %i métabolites'% len(modelEcoli.metabolites))
 
 modelEcoli.summary()
 
-modelEcoli.objective = "RXN__45__16539"
-solution = modelEcoli.optimize()
-fluxMax = solution.objective_value
-print(fluxMax)
+# modelEcoli.objective = "RXN__45__16539"
+# solution = modelEcoli.optimize()
+# fluxMax = solution.objective_value
+# print(fluxMax)
+
+# modelEcoli.summary()
 
 
 print "Writing JSON model for comparison ...\n"
@@ -68,11 +71,11 @@ print "Done!\n"
 
 index=0
 for i in range(len(modelEcoli.metabolites)):
-        if(modelEcoli.metabolites[i].id == "CPD__45__17786_c"):
+        if(modelEcoli.metabolites[i].id == "CPD__45__17793_c"):
                 index=i
                 print(index)
 
-modelEcoli.add_boundary(modelEcoli.metabolites[index], type="exchange", reaction_id="RX__45__16539",lb=None, ub=1000.0)
+modelEcoli.add_boundary(modelEcoli.metabolites[index], type="exchange", reaction_id="RX__45__16539",lb=None, ub=1000)
 
 print(modelEcoli.boundary[0:10])
 medium = modelEcoli.medium
