@@ -246,8 +246,17 @@ On ouvre ensuite ce le fichier .xml avec cytoscape. On modifie le layout pour av
 - Salmonella : **2546** réactions, **1802** métabolites et **1264** gènes.
 - Réactions communes : **2186**
 - Métabolites communs : **1593**
-<!-- - Biomasse : 0.982 E.coli et 0.38 Salmonella -->
+- Biomasse : 0.982 E.coli et 0.38 Salmonella
 
+En terme de proportion de molécules dans les réactions de biomasse de ces deux procaryotes, on peut constater une différence au niveau des substrats. Chez E.coli il y a, à peu près, 60 composés contre 40 composés chez Salmonella. Les composés en communs concernent les acides aminés essentielles à la vie (ala__L_c, pro__L_c, tyr__L_c, etc...) et des métabolites comme le potassium (k_c), l'UTP (utp_c), la manganèse (mn2_c), le magnésium (mg2_c), le fer 2 (fe2_c) et d'autres. En ce qui concerne les produits, on obtient les 4 mêmes composés, c'est à dire l'ADP (adp_c), l'hydrogène (h_c), le phosphate inorganique (pi_c, ppi_c). De plus, les flux de biomasses sont supérieurs chez E.coli que chez Salmonella, peut être du au fait de la différence de richesse en substrat entre les deux. (??) 
+
+> Origines des différences ? 
+
+Le flux de biomasse chez E.coli (Ec_biomass_iJO1366_core_53p95M) est très important. En effet le flux est de 0.98 au maximum, avec un écart entre le minimum et le maximum assez faible ([0.88;0.98]). Parmi les flux les plus significatif issu de notre modèle (fraction of optimum >= 0.9), on retrouve des flux de demandes et des flux d'échanges en plus de celle de la biomasse. Notamment, ces réactions " DM_OXAM " et "EX_12ppd__R_e" présentent les valeurs maximales de flux les plus importantes.
+
+Le flux de biomasse chez Salmonella (biomass_iRR1083_metals) reste faible comparé à E.coli (0.38 contre 0.98). Par contre les valeurs sont plus importantes pour les autres flux, elles sont même plus éparses. Par exemple pour la réaction "12DGR120tipp", on obtient une valeur maximale de 34.892736 et un minimum de 0. On peut aussi avoir des valeurs de flux négatives comme pour la réaction "12PPDStpp" avec au minimum -1000 et au maximum 1000. 
+
+Sinon en général, la plupart des réaction présentent des valeurs trop faibles ou des valeurs nulles dans les deux espèces de notre étude.
 
 
 ## **Diapo 38 (facultatif)**
