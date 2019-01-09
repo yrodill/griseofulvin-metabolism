@@ -74,14 +74,20 @@ for metabo in modelEcoli.metabolites:
 print('Reactions communes : %i'% cptReac)
 print('Metabo communs %i : '% cptMetabo)
 
-file = open('reaction.txt',"w") 
-file.write(str(modelEcoli.reactions.get_by_id("Ec_biomass_iJO1366_core_53p95M")))
-file.write("\n")
+# Compare biomass compo
+modelEcoli.reactions.get_by_id("Ec_biomass_iJO1366_core_53p95M")
+modelSalmonella.reactions.get_by_id("biomass_iRR1083_metals")
+
+# file = open('reaction.txt',"w") 
+# file.write(str(modelEcoli.reactions.get_by_id("Ec_biomass_iJO1366_core_53p95M")))
+# file.write("\n")
 #Ec_biomass_iJO1366_core_53p95M
-file.write(str(modelSalmonella.reactions.get_by_id("biomass_iRR1083_metals")))
+# file.write(str(modelSalmonella.reactions.get_by_id("biomass_iRR1083_metals")))
 # biomass_iRR1083_metals
-print('\nSave done ')
-file.close()
+# print('\nSave done ')
+# file.close()
+
+
 # FVA analyze flux
 # fvaColi_df = flux_analysis.variability.flux_variability_analysis(modelEcoli, fraction_of_optimum = 1.0)
 # fvaSalmo_df = flux_analysis.variability.flux_variability_analysis(modelSalmonella, fraction_of_optimum = 1.0)
