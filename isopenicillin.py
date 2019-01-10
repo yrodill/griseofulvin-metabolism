@@ -75,11 +75,10 @@ for i in range(len(modelEcoli.metabolites)):
 
 modelEcoli.add_boundary(modelEcoli.metabolites[index], type="exchange", reaction_id="RX__45__16539",lb=None, ub=1000.0)
 
-# print(modelEcoli.boundary[0:10])
-# medium = modelEcoli.medium
-# print modelEcoli.medium
-# # print model.metabolites.h_c.summary()
-# # print model.metabolites.nadph_c.summary()
+modelEcoli.objective = "export_isopenicillin"
+solution = modelEcoli.optimize()
+fluxMax = solution.objective_value
+print(fluxMax)
 
 modelEcoli.summary()
 # modelEcoli.summary(fva=0.95)
