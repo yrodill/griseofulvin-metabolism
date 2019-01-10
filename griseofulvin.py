@@ -67,7 +67,7 @@ print "Writing JSON model for comparison ...\n"
 cobra.io.save_json_model(modelEcoli, "./test.json")
 print "Done!\n"
 
-# medium["CPD__45__17786_c"]=1000.0
+#recherche du précurseur
 
 index=0
 for i in range(len(modelEcoli.metabolites)):
@@ -89,21 +89,9 @@ print modelEcoli.medium
 #reaction de depart : 
 #ACP_c + accoa_c + 6.0 h_c + 6.0 malcoa_c --> CPD__45__17794_c + 6.0 co2_c + 7.0 coa_c + h2o_c
 
-ACP_c = modelEcoli.metabolites.get_by_id("ACP_c")
-accoa_c = modelEcoli.metabolites.get_by_id("accoa_c")
-h_c = modelEcoli.metabolites.get_by_id("h_c")
-malcoa_c = modelEcoli.metabolites.get_by_id("malcoa_c")
 CPD__45__17786_c = modelEcoli.metabolites.get_by_id("CPD__45__17786_c")
 
 
-
-reactionUptake = Reaction(
-        id = "uptake",
-        name = "reaction uptake",
-        lower_bound = 0,
-        upper_bound = 1000
-)
-reactionUptake.add_metabolites({ACP_c:1,accoa_c:1,h_c:6,malcoa_c:6})
 
 reactionExp_griseofulvin = Reaction(
         id = "export_griseofulvin",
@@ -113,7 +101,7 @@ reactionExp_griseofulvin = Reaction(
 )
 reactionExp_griseofulvin.add_metabolites({CPD__45__17786_c:-1})
 
-modelEcoli.add_reactions([reactionUptake,reactionExp_griseofulvin])
+modelEcoli.add_reactions([reactionExp_griseofulvin])
 
 modelEcoli.objective = "export_griseofulvin"
 solution = modelEcoli.optimize()

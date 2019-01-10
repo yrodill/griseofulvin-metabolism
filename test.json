@@ -13119,7 +13119,8 @@
 },
 "lower_bound":0.0,
 "upper_bound":1000.0,
-"gene_reaction_rule":""
+"gene_reaction_rule":"",
+"objective_coefficient":1.0
 },
 {
 "id":"EX_12ppd__R_e",
@@ -46478,7 +46479,6 @@
 "lower_bound":0.0,
 "upper_bound":1000.0,
 "gene_reaction_rule":"(G-43984)",
-"objective_coefficient":1.0,
 "subsystem":"PWY-7653",
 "notes":{
 "BIOCYC":[

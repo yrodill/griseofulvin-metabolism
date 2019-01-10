@@ -254,15 +254,21 @@ En terme de proportion de molécules dans les réactions de biomasse de ces deux
 
 > Origines des différences ? 
 
-Le flux de biomasse chez E.coli (Ec_biomass_iJO1366_core_53p95M) est très important. En effet le flux est de 0.98 au maximum, avec un écart entre le minimum et le maximum assez faible ([0.88;0.98]). Parmi les flux les plus significatif issu de notre modèle (fraction of optimum >= 0.9), on retrouve des flux de demandes et des flux d'échanges en plus de celle de la biomasse. Notamment, ces réactions " DM_OXAM " et "EX_12ppd__R_e" présentent les valeurs maximales de flux les plus importantes.
+Le flux de biomasse chez E.coli (Ec_biomass_iJO1366_core_53p95M) est très important. En effet le flux est de 0.98 au maximum, avec un écart entre le minimum et le maximum assez faible ([0.88;0.98]). Parmi les flux les plus significatifs issu de notre modèle (fraction of optimum >= 0.9), on retrouve des flux de demandes et des flux d'échanges en plus de celle de la biomasse. Notamment, ces réactions " DM_OXAM " et "EX_12ppd__R_e" qui présentent les valeurs maximales de flux les plus importantes.
 
 Le flux de biomasse chez Salmonella (biomass_iRR1083_metals) reste faible comparé à E.coli (0.38 contre 0.98). Par contre les valeurs sont plus importantes pour les autres flux, elles sont même plus éparses. Par exemple pour la réaction "12DGR120tipp", on obtient une valeur maximale de 34.892736 et un minimum de 0. On peut aussi avoir des valeurs de flux négatives comme pour la réaction "12PPDStpp" avec au minimum -1000 et au maximum 1000. 
 
-Sinon en général, la plupart des réaction présentent des valeurs trop faibles ou des valeurs nulles dans les deux espèces de notre étude.
+Sinon en général, la plupart des réactions présentent des valeurs trop faibles ou des valeurs nulles dans les deux espèces de notre étude.
 
 
 ## **Diapo 38 (facultatif)**
 
 ***Combien de moles peut-on en produire par mole de glucose ? Et en concervant une production de biomasse égale à 20% de la production maximale ? Quelles réactions ne peuvent être utilisées que pour produire la molécule d’intérêt et pas pour produire de la biomasse ?***
 
-**Voir le script : griseofulvin.py**
+**Voir les scripts : griseofulvin.py et isopenicillin.py**
+
+Pour pouvoir créer les métabolites voulues à partir d'E.coli nous avons du charger les données de metacyc.json, déterminer quels "subsystem" étaient impliqués dans la création du métabolite en regardant les pathways sur le https://metacyc.org/ . 
+
+Nous avons ensuite remplacés les IDs des réactions importées depuis metacyc pour les métabolites qui possédaient déjà un id différent (type BIGG) dans le modèle E.coli chargé depuis cobrapy. 
+
+Enfin, il a fallu s'assurer l'apport en précurseur pour pouvoir créer la molécule d'intérêt.
