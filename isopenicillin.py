@@ -49,21 +49,17 @@ print('Ce modèle contient %i métabolites'% len(modelEcoli.metabolites))
 
 modelEcoli.summary()
 
-reactionUptake = Reaction(
-        id = "uptake",
-        name = "reaction uptake",
+ISOPENICILLIN__45__N_c = modelEcoli.metabolites.get_by_id("ISOPENICILLIN__45__N_c")
+
+reactionExp_isopenicillin = Reaction(
+        id = "export_isopenicillin",
+        name = "reaction export isopenicillin (objective reaction)",
         lower_bound = 0,
         upper_bound = 1000
 )
-reactionUptake.add_metabolites({CPD__45__468_c:1,ALLYSINE_c:-1,nadp_c:-1,nadph_c:1,h_c:2,h2o_c:1})
+reactionExp_isopenicillin.add_metabolites({ISOPENICILLIN__45__N_c:-1})
 
-
-modelEcoli.objective = "_1__46__21__46__3__46__1__45__RXN"
-solution = modelEcoli.optimize()
-fluxMax = solution.objective_value
-print(fluxMax)
-
-modelEcoli.summary()
+modelEcoli.add_reactions([reactionExp_isopenicillin])
 
 # print "Writing JSON model for comparison ...\n"
 # cobra.io.save_json_model(modelEcoli, "./test.json")
@@ -71,13 +67,13 @@ modelEcoli.summary()
 
 # medium["CPD__45__17786_c"]=1000.0
 
-# index=0
-# for i in range(len(modelEcoli.metabolites)):
-#         if(modelEcoli.metabolites[i].id == "CPD__45__17786_c"):
-#                 index=i
-#                 print(index)
+index=0
+for i in range(len(modelEcoli.metabolites)):
+        if(modelEcoli.metabolites[i].id == "N__45__5S__45__5__45__AMINO__45__5__45__CARBOXYPENTANOYL__45__L__45__CY_c"):
+                index=i
+                print(index)
 
-# modelEcoli.add_boundary(modelEcoli.metabolites[index], type="exchange", reaction_id="RX__45__16539",lb=None, ub=1000.0)
+modelEcoli.add_boundary(modelEcoli.metabolites[index], type="exchange", reaction_id="RX__45__16539",lb=None, ub=1000.0)
 
 # print(modelEcoli.boundary[0:10])
 # medium = modelEcoli.medium
@@ -85,5 +81,5 @@ modelEcoli.summary()
 # # print model.metabolites.h_c.summary()
 # # print model.metabolites.nadph_c.summary()
 
-# modelEcoli.summary()
+modelEcoli.summary()
 # modelEcoli.summary(fva=0.95)

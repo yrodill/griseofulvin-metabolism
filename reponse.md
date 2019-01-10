@@ -217,7 +217,7 @@ Les autres modèles a,e et f permettent de créer du T.
 
 *En analyse de graphe* :
 
-On aurait tendance à dire que les modèles contenant des cyles ne peuvent pas produire de T. Par exemple pour la réaction r2 du modèle b, il faudrait un apport de C1 pour faire la réaction.
+On aurait tendance à dire que les modèles contenant des cycles ne peuvent pas produire de T. Par exemple pour la réaction r2 du modèle b, il faudrait un apport de C1 pour faire la réaction.
 
 Le script calculant les flux semble permissif au niveau des cycles en permettant une réaction qui semble impossible en analyse de graphe.
 
@@ -242,6 +242,8 @@ On ouvre ensuite ce le fichier .xml avec cytoscape. On modifie le layout pour av
 
 ***Nombre de réactions, de métabolites, de gènes. Nombre de réactions et de métabolites partagés. Différences dans la composition de biomasse. Étude de flux dans ces deux modèles. Soyez inventifs !***
 
+**Voir le script hugeModel.py**
+
 - E.coli : **2583** réactions, **1805** métabolites, **1367** gènes.
 - Salmonella : **2546** réactions, **1802** métabolites et **1264** gènes.
 - Réactions communes : **2186**
@@ -262,3 +264,5 @@ Sinon en général, la plupart des réaction présentent des valeurs trop faible
 ## **Diapo 38 (facultatif)**
 
 ***Combien de moles peut-on en produire par mole de glucose ? Et en concervant une production de biomasse égale à 20% de la production maximale ? Quelles réactions ne peuvent être utilisées que pour produire la molécule d’intérêt et pas pour produire de la biomasse ?***
+
+**Voir le script : griseofulvin.py**
